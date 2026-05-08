@@ -20,6 +20,7 @@ export default function Navbar() {
   }, []);
 
   const navLinks = [
+    { name: 'Home', href: 'top' },
     { name: 'Projects', href: 'projects' },
     { name: 'Expertise', href: 'expertise' },
     { name: 'About', href: 'about' },
@@ -28,6 +29,10 @@ export default function Navbar() {
 
   const handleLinkClick = (id: string) => {
     setIsOpen(false);
+    if (id === 'top') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
     if (location.pathname !== '/') {
       return;
     }

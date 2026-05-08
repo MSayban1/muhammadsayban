@@ -95,7 +95,12 @@ export default function AdminDashboard() {
               transition={{ duration: 0.2 }}
             >
               {activeTab === 'hero' && <HeroForm data={data.hero} themeColor={data.theme.primaryColor} />}
-              {activeTab === 'about' && <AboutForm data={data.about} themeColor={data.theme.primaryColor} />}
+              {activeTab === 'about' && (
+                <div className="space-y-12">
+                  <AboutForm data={data.about} themeColor={data.theme.primaryColor} />
+                  <AchievementsManager achievements={data.about.achievements} />
+                </div>
+              )}
               {activeTab === 'skills' && <SkillsManager skills={data.skills} themeColor={data.theme.primaryColor} />}
               {activeTab === 'projects' && <ProjectsManager projects={data.projects} themeColor={data.theme.primaryColor} />}
               {activeTab === 'contact' && <ContactForm data={data.contact} footer={data.footer} themeColor={data.theme.primaryColor} />}
@@ -167,6 +172,56 @@ function AboutForm({ data, themeColor }: { data: any, themeColor: string }) {
         </button>
       </div>
     </form>
+  );
+}
+
+function AchievementsManager({ achievements = [] }: { achievements: string[] }) {
+  const [newItem, setNewItem] = useState('');
+
+  const addItem = () => {
+    if (!newItem) return;
+    const updated = [...(achievements || []), newItem];
+    update(ref(rtdb, 'portfolio/about'), { achievements: updated })
+      .then(() => {
+        setNewItem('');
+        toast.success('Achievement added');
+      });
+  };
+
+  const removeItem = (index: number) => {
+    const updated = (achievements || []).filter((_, i) => i !== index);
+    update(ref(rtdb, 'portfolio/about'), { achievements: updated });
+  };
+
+  return (
+    <div className="bg-zinc-900 border border-zinc-800 p-8 rounded-3xl space-y-6">
+      <h3 className="font-bold text-xl mb-4">Achievements & Milestones</h3>
+      <div className="flex gap-2">
+        <input 
+          type="text" 
+          value={newItem}
+          onChange={(e) => setNewItem(e.target.value)}
+          placeholder="e.g. 150+ Successful Launches"
+          className="flex-grow bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-zinc-600 transition-all font-medium"
+        />
+        <button 
+          onClick={addItem} 
+          className="bg-white text-zinc-950 font-bold px-6 rounded-xl transition-all hover:bg-zinc-200 active:scale-95 flex items-center justify-center"
+        >
+          <Plus size={20} />
+        </button>
+      </div>
+      <div className="space-y-3">
+        {(achievements || []).map((item, i) => (
+          <div key={i} className="flex justify-between items-center bg-zinc-950 border border-zinc-800/50 p-4 rounded-2xl group transition-all hover:border-zinc-700">
+            <span className="text-sm font-medium text-zinc-300">{item}</span>
+            <button onClick={() => removeItem(i)} className="text-zinc-600 hover:text-red-500 transition-colors p-1">
+              <Trash2 size={18} />
+            </button>
+          </div>
+        ))}
+      </div>
+    </div>
   );
 }
 
