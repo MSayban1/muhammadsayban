@@ -46,9 +46,9 @@ export default function About() {
         >
           <div className="aspect-square rounded-3xl overflow-hidden relative z-10 border border-white/5">
             <img 
-              src={data.hero.bannerUrl} 
+              src={data.hero.aboutBannerUrl} 
               alt="About" 
-              className="w-full h-full object-cover grayscale brightness-50 hover:grayscale-0 transition-all duration-1000"
+              className="w-full h-full object-cover grayscale brightness-75 hover:grayscale-0 transition-all duration-1000 scale-110 hover:scale-100"
             />
           </div>
           {/* Decorative frame */}

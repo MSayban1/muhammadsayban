@@ -6,6 +6,7 @@ export interface HeroData {
   email: string;
   googleForm?: string;
   bannerUrl: string;
+  aboutBannerUrl: string;
 }
 
 export interface AboutData {

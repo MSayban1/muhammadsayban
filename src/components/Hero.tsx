@@ -23,14 +23,16 @@ export default function Hero() {
     <section ref={containerRef} className="relative h-screen flex items-center justify-center overflow-hidden">
       {/* Background Banner */}
       <motion.div 
-        style={{ scale, opacity: 0.4 }}
+        style={{ scale, opacity: 0.5 }}
         className="absolute inset-0 z-0"
       >
-        <div 
-          className="w-full h-full bg-cover bg-center"
-          style={{ backgroundImage: `url(${data.hero.bannerUrl})` }}
+        <img 
+          src={data.hero.bannerUrl} 
+          alt="Muhammad Sayban"
+          className="w-full h-full object-cover grayscale brightness-[0.6] contrast-[1.1]"
+          loading="eager"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-zinc-950/20 via-zinc-950/60 to-zinc-950" />
+        <div className="absolute inset-0 bg-gradient-to-b from-zinc-950/40 via-zinc-950/70 to-zinc-950" />
       </motion.div>
 
       {/* Hero Content */}

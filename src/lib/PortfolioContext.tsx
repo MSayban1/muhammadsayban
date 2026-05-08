@@ -25,7 +25,8 @@ const DEFAULT_DATA: PortfolioData = {
     whatsapp: "+1234567890",
     email: "muhammadsayban1123@gmail.com",
     googleForm: "https://docs.google.com/forms/d/e/123",
-    bannerUrl: "https://images.unsplash.com/photo-1557683316-973673baf926?auto=format&fit=crop&q=80&w=2000"
+    bannerUrl: "https://images.unsplash.com/photo-1557683316-973673baf926?auto=format&fit=crop&q=100&w=2400",
+    aboutBannerUrl: "https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&q=100&w=2400"
   },
   about: {
     introHighlight: "I am a multi-disciplinary designer with over 8 years of experience creating digital products that bridge the gap between aesthetics and functionality.",

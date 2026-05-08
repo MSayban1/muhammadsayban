@@ -131,7 +131,10 @@ function HeroForm({ data, themeColor }: { data: any, themeColor: string }) {
         <InputField label="Public Email" register={register('email')} />
       </div>
       <InputField label="Google Form URL (Optional)" register={register('googleForm')} />
-      <InputField label="Banner Image URL" register={register('bannerUrl')} />
+      <div className="grid md:grid-cols-2 gap-6">
+        <InputField label="Hero Banner URL" register={register('bannerUrl')} />
+        <InputField label="About Intro Image URL" register={register('aboutBannerUrl')} />
+      </div>
       
       <div className="pt-6">
         <button type="submit" className="flex items-center gap-2 px-6 py-3 rounded-xl font-bold bg-white text-zinc-950 hover:bg-zinc-200 transition-all">

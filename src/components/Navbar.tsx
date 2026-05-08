@@ -69,22 +69,6 @@ export default function Navbar() {
               </Link>
             )
           ))}
-          {user ? (
-            <Link 
-              to="/admin" 
-              className="p-2 rounded-full bg-zinc-800 hover:bg-zinc-700 transition-colors"
-              title="Admin Panel"
-            >
-              <Settings size={18} />
-            </Link>
-          ) : (
-            <Link 
-              to="/login"
-              className="p-2 rounded-full bg-white/5 hover:bg-white/10 transition-colors opacity-0 hover:opacity-100"
-            >
-              <LogIn size={14} className="text-zinc-400" />
-            </Link>
-          )}
         </div>
 
         {/* Mobile Toggle */}
@@ -126,11 +110,6 @@ export default function Navbar() {
                 </Link>
               )
             ))}
-            {user && (
-              <Link to="/admin" className="text-3xl font-bold tracking-tighter text-blue-400" onClick={() => setIsOpen(false)}>
-                Dashboard
-              </Link>
-            )}
           </motion.div>
         )}
       </AnimatePresence>
