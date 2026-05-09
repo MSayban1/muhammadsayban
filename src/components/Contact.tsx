@@ -100,12 +100,12 @@ ${message}
                   transition={{ delay: i * 0.1 }}
                   className="flex items-center gap-4 group p-4 rounded-2xl bg-zinc-900 border border-zinc-800 hover:border-zinc-700 transition-all"
                 >
-                  <div className={`p-3 rounded-xl bg-${item.color}-500/10 text-${item.color}-500`}>
+                  <div className={`p-3 shrink-0 rounded-xl bg-${item.color}-500/10 text-${item.color}-500`}>
                     <item.icon size={24} />
                   </div>
-                  <div>
-                    <div className="text-xs font-bold text-zinc-500 uppercase tracking-widest">{item.label}</div>
-                    <div className="font-bold">{item.value}</div>
+                  <div className="min-w-0 flex-1 overflow-hidden">
+                    <div className="text-[10px] md:text-xs font-bold text-zinc-500 uppercase tracking-widest">{item.label}</div>
+                    <div className="font-bold text-sm md:text-base break-all md:break-normal">{item.value}</div>
                   </div>
                 </motion.a>
               ))}
@@ -121,12 +121,12 @@ ${message}
                   transition={{ delay: 0.2 }}
                   className="flex items-center gap-4 group p-4 rounded-2xl bg-zinc-900 border border-zinc-800 hover:border-zinc-700 transition-all text-purple-400"
                 >
-                  <div className="p-3 rounded-xl bg-purple-500/10 text-purple-500">
+                  <div className="p-3 shrink-0 rounded-xl bg-purple-500/10 text-purple-500">
                     <FileText size={24} />
                   </div>
-                  <div>
-                    <div className="text-xs font-bold text-zinc-500 uppercase tracking-widest">Inquiry Form</div>
-                    <div className="font-bold text-sm">Direct Redirect</div>
+                  <div className="min-w-0 flex-1 overflow-hidden">
+                    <div className="text-[10px] md:text-xs font-bold text-zinc-500 uppercase tracking-widest">Inquiry Form</div>
+                    <div className="font-bold text-sm md:text-base break-all md:break-normal">Direct Redirect</div>
                   </div>
                 </motion.a>
               )}
@@ -138,7 +138,7 @@ ${message}
             initial={{ opacity: 0, rotateY: 20, x: 50 }}
             whileInView={{ opacity: 1, rotateY: 0, x: 0 }}
             viewport={{ once: false }}
-            className="p-8 md:p-12 rounded-[2.5rem] bg-zinc-900 border border-zinc-800 relative shadow-2xl overflow-hidden"
+            className="p-6 md:p-12 rounded-[2.5rem] bg-zinc-900 border border-zinc-800 relative shadow-2xl overflow-hidden"
           >
             <form ref={formRef} onSubmit={handleSubmit} className="space-y-6 relative z-10">
               <div>

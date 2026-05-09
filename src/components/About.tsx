@@ -7,15 +7,15 @@ export default function About() {
   if (!data) return null;
 
   return (
-    <section id="about" className="py-24 px-6 relative">
-      <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+    <section id="about" className="py-24 px-6 relative overflow-hidden">
+      <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 md:gap-16 items-center">
         <motion.div
           initial={{ opacity: 0, x: -50 }}
           whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: false }}
-          className="relative group"
+          viewport={{ once: true }}
+          className="relative group z-10"
         >
-          <div className="text-8xl font-bold opacity-5 absolute -top-12 -left-6 pointer-events-none">ABOUT</div>
+          <div className="text-6xl md:text-8xl font-bold opacity-5 absolute -top-10 md:-top-12 -left-4 md:-left-6 pointer-events-none">ABOUT</div>
           <h2 className="text-4xl md:text-5xl font-bold mb-8 leading-tight">
             I craft digital experiences that <span style={{ color: data.theme.primaryColor }}>resonate.</span>
           </h2>

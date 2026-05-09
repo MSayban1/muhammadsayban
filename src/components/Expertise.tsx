@@ -7,21 +7,21 @@ export default function Expertise() {
   if (!data) return null;
 
   return (
-    <section id="expertise" className="py-24 px-6 bg-zinc-900/30">
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-20">
+    <section id="expertise" className="py-24 px-6 bg-zinc-900/30 overflow-hidden">
+      <div className="max-w-7xl mx-auto relative">
+        <div className="text-center mb-16 md:mb-20">
           <motion.p 
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            className="text-sm font-bold uppercase tracking-widest mb-4 transition-colors"
+            className="text-xs md:text-sm font-bold uppercase tracking-widest mb-4 transition-colors"
             style={{ color: data.theme.primaryColor }}
           >
             My Stack
           </motion.p>
-          <h2 className="text-4xl md:text-6xl font-bold tracking-tighter">Core Expertise.</h2>
+          <h2 className="text-3xl md:text-6xl font-bold tracking-tighter">Core Expertise.</h2>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-x-16 gap-y-12">
+        <div className="grid md:grid-cols-2 gap-x-8 md:gap-x-16 gap-y-10 md:gap-y-12">
           {data.skills.length > 0 ? data.skills.map((skill, i) => (
             <motion.div
               key={skill.id}

@@ -20,7 +20,7 @@ export default function Footer() {
           {/* Brand */}
           <div className="col-span-1 md:col-span-2">
             <Link to="/" className="text-3xl font-bold tracking-tighter" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-              {data?.hero.name}<span style={{ color: data?.theme.primaryColor }}>.</span>
+              {data?.hero.name.split(' ')[0]}<span style={{ color: data?.theme.primaryColor }}>.</span>
             </Link>
             <p className="text-zinc-500 text-lg mt-6 max-w-sm leading-relaxed transition-colors duration-500">
               Transforming visionary ideas into elite digital experiences. Specializing in high-performance landing pages that scale brands.

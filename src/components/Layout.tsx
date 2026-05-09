@@ -11,7 +11,7 @@ export default function Layout({ children }: { children: ReactNode }) {
     <div className={`min-h-screen transition-colors duration-500 ${data?.theme.darkMode ? 'bg-zinc-950 text-zinc-100' : 'bg-white text-zinc-900'}`}>
       <CustomCursor />
       <Navbar />
-      <main className="relative overflow-hidden">
+      <main className="relative overflow-hidden w-full min-w-0">
         {children}
       </main>
       <Footer />

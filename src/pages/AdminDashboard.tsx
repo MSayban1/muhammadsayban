@@ -8,7 +8,7 @@ import { signOut } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { 
-  Save, LogOut, ChevronRight, Plus, Trash2, 
+  Save, LogOut, ChevronRight, Plus, Trash2, Menu, X,
   Image as ImageIcon, Layout as LayoutIcon, User, Layers, Briefcase, Phone, Settings, ShieldCheck
 } from 'lucide-react';
 import { toast } from 'sonner';
@@ -18,6 +18,7 @@ export default function AdminDashboard() {
   const { data, loading } = usePortfolio();
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState('hero');
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   if (loading || !data) return <div className="h-screen bg-zinc-950 flex items-center justify-center text-white">Loading Terminal...</div>;
 
@@ -37,10 +38,39 @@ export default function AdminDashboard() {
   ];
 
   return (
-    <div className="min-h-screen bg-zinc-950 text-zinc-100 flex flex-col md:flex-row">
+    <div className="min-h-screen bg-zinc-950 text-zinc-100 flex flex-col md:flex-row relative overflow-hidden">
+      {/* Mobile Header */}
+      <div className="md:hidden flex items-center justify-between p-6 bg-zinc-900 border-b border-zinc-800 sticky top-0 z-50">
+        <div className="text-xl font-bold tracking-tighter">
+          Admin<span style={{ color: data.theme.primaryColor }}>Panel</span>
+        </div>
+        <button 
+          onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+          className="p-2 bg-zinc-800 rounded-lg"
+        >
+          {isSidebarOpen ? <X size={20} /> : <Menu size={20} />}
+        </button>
+      </div>
+
+      {/* Sidebar Overlay */}
+      <AnimatePresence>
+        {isSidebarOpen && (
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setIsSidebarOpen(false)}
+            className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[60] md:hidden"
+          />
+        )}
+      </AnimatePresence>
+
       {/* Sidebar */}
-      <aside className="w-full md:w-64 bg-zinc-900 border-b md:border-b-0 md:border-r border-zinc-800 p-6 flex flex-col gap-8">
-        <div>
+      <aside className={`
+        fixed inset-y-0 left-0 z-[70] w-64 bg-zinc-900 border-r border-zinc-800 p-6 flex flex-col gap-8 transition-transform duration-300 md:relative md:translate-x-0
+        ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'}
+      `}>
+        <div className="hidden md:block">
           <div className="text-xl font-bold tracking-tighter mb-1">
             Admin<span style={{ color: data.theme.primaryColor }}>Panel</span>
           </div>
@@ -51,7 +81,10 @@ export default function AdminDashboard() {
           {tabs.map((tab) => (
             <button
               key={tab.id}
-              onClick={() => setActiveTab(tab.id)}
+              onClick={() => {
+                setActiveTab(tab.id);
+                setIsSidebarOpen(false);
+              }}
               className={`flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all ${
                 activeTab === tab.id 
                   ? 'bg-zinc-800 text-white shadow-lg' 
@@ -75,8 +108,8 @@ export default function AdminDashboard() {
       </aside>
 
       {/* Main Content */}
-      <main className="flex-grow p-6 md:p-12 overflow-y-auto max-h-screen">
-        <div className="max-w-4xl mx-auto">
+      <main className="flex-grow p-6 md:p-12 overflow-y-auto md:max-h-screen">
+        <div className="max-w-4xl mx-auto pb-20">
           <header className="mb-12 flex justify-between items-end">
             <div>
               <h2 className="text-3xl font-bold tracking-tight mb-2">
