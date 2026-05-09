@@ -41,7 +41,7 @@ export default function About() {
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: false }}
+          viewport={{ once: true }}
           className="relative"
         >
           <div className="aspect-square rounded-3xl overflow-hidden relative z-10 border border-white/5">

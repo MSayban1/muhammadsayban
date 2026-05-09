@@ -28,7 +28,7 @@ export default function Expertise() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.1 }}
-              viewport={{ once: false }}
+              viewport={{ once: true }}
               className="group"
             >
               <div className="flex justify-between items-center mb-4">
@@ -48,7 +48,7 @@ export default function Expertise() {
                   initial={{ width: 0 }}
                   whileInView={{ width: `${skill.percentage}%` }}
                   transition={{ duration: 1.5, ease: "easeOut" }}
-                  viewport={{ once: false }}
+                  viewport={{ once: true }}
                   className="h-full rounded-full shadow-[0_0_15px_rgba(0,0,0,0.5)]"
                   style={{ backgroundColor: data.theme.primaryColor }}
                 />

@@ -18,8 +18,12 @@ export default function Home() {
 
   if (loading) {
     return (
-      <div className="h-screen w-full flex items-center justify-center bg-zinc-950 text-white font-mono uppercase tracking-[0.5em] text-xs animate-pulse">
-        Initializing Creative Environment...
+      <div className="min-h-screen w-full flex items-center justify-center bg-zinc-950 text-white p-6">
+        <div className="text-center">
+          <div className="font-mono uppercase tracking-[0.2em] md:tracking-[0.5em] text-[10px] md:text-xs animate-pulse break-words max-w-[280px] md:max-w-none mx-auto leading-relaxed">
+            Initializing Creative Environment...
+          </div>
+        </div>
       </div>
     );
   }
@@ -29,7 +33,7 @@ export default function Home() {
       <Hero />
       <div className="relative">
         {/* Background elements that span sections */}
-        <div className="absolute top-0 right-0 w-1/3 h-[2000px] bg-gradient-to-l from-white/[0.02] to-transparent pointer-events-none" />
+        <div className="absolute top-0 right-0 w-1/3 h-[2000px] bg-gradient-to-l from-white/[0.01] to-transparent pointer-events-none hidden md:block" />
         <About />
         <Expertise />
         <Projects />

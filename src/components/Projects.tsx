@@ -34,7 +34,7 @@ export default function Projects() {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.1 }}
-              viewport={{ once: false }}
+              viewport={{ once: true }}
               className="group relative flex flex-col bg-zinc-900 overflow-hidden rounded-[2rem] border border-zinc-800 transition-all duration-500 hover:border-zinc-700 hover:shadow-2xl hover:shadow-black/50"
             >
               <div className="aspect-[16/10] overflow-hidden">

@@ -81,14 +81,13 @@ export default function Hero() {
   });
 
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
-  const scale = useTransform(scrollYProgress, [0, 0.5], [1, 1.1]);
-  const y = useTransform(scrollYProgress, [0, 0.5], [0, 100]);
-  const blur = useTransform(scrollYProgress, [0, 0.5], [0, 10]);
+  const scale = useTransform(scrollYProgress, [0, 0.5], [1, 1.05]);
+  const y = useTransform(scrollYProgress, [0, 0.5], [0, 50]);
 
   if (!data) return null;
 
   return (
-    <section ref={containerRef} className="relative min-h-[100dvh] flex items-center justify-center overflow-hidden py-20">
+    <section ref={containerRef} className="relative min-h-[100dvh] flex items-center justify-center overflow-hidden py-12 md:py-20">
       {/* Background Banner */}
       <motion.div 
         style={{ scale, opacity: 0.5 }}
@@ -105,7 +104,7 @@ export default function Hero() {
 
       {/* Hero Content */}
       <motion.div 
-        style={{ opacity, y, filter: `blur(${blur}px)` }}
+        style={{ opacity, y }}
         className="relative z-10 text-center w-full max-w-5xl px-4 sm:px-6 md:px-10"
       >
         <InteractiveHeading 
